@@ -1,5 +1,9 @@
-FROM rabbitmq:3-management
+FROM rabbitmq
 
+# default port 15674
 RUN rabbitmq-plugins enable --offline rabbitmq_web_stomp
 
-EXPOSE 15672 15674
+# default port 15672: access with ssh port forwarding
+RUN rabbitmq-plugins enable --offline rabbitmq_management
+
+EXPOSE 15674
